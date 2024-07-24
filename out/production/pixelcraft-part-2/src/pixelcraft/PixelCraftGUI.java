@@ -1,7 +1,10 @@
-package src.main.java.pixelcraft;
+package pixelcraft;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import pixelcraft.model.PCModel;
+import pixelcraft.view.PCView;
+import pixelcraft.controller.PCController;
 
 public class PixelCraftGUI extends Application {
 
@@ -16,6 +19,6 @@ public class PixelCraftGUI extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

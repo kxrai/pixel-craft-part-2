@@ -1,4 +1,7 @@
-package src.main.java.pixelcraft;
+package pixelcraft.controller;
+
+import pixelcraft.model.PCModel;
+import pixelcraft.view.PCView;
 
 public class PCController {
     private PCModel model;
@@ -7,9 +10,10 @@ public class PCController {
     public PCController(PCModel model, PCView view) {
         this.model = model;
         this.view = view;
+        this.view.setModel(model);
     }
 
     public void installControllers() {
-        // Set up event handlers and listeners here
+        // Add event handlers for the view
     }
 }
