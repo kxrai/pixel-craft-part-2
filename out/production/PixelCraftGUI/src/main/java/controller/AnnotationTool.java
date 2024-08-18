@@ -10,10 +10,12 @@ public class AnnotationTool {
 
     private Canvas canvas;
     private GraphicsContext gc;
+    private boolean drawingEnabled;
 
     public AnnotationTool(Canvas canvas) {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
+        this.drawingEnabled = false;
         initCanvas();
     }
 
@@ -27,7 +29,7 @@ public class AnnotationTool {
     }
 
     private void onMousePressed(MouseEvent e) {
-        if (e.getButton() == MouseButton.PRIMARY) {
+        if (drawingEnabled && e.getButton() == MouseButton.PRIMARY) {
             gc.beginPath();
             gc.moveTo(e.getX(), e.getY());
             gc.stroke();
@@ -35,14 +37,16 @@ public class AnnotationTool {
     }
 
     private void onMouseDragged(MouseEvent e) {
-        if (e.getButton() == MouseButton.PRIMARY) {
+        if (drawingEnabled && e.getButton() == MouseButton.PRIMARY) {
             gc.lineTo(e.getX(), e.getY());
             gc.stroke();
         }
     }
 
     private void onMouseReleased(MouseEvent e) {
-        gc.closePath();
+        if (drawingEnabled) {
+            gc.closePath();
+        }
     }
 
     public void setColor(Color color) {
@@ -55,5 +59,13 @@ public class AnnotationTool {
 
     public void clearCanvas() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    public void setDrawingEnabled(boolean enabled) {
+        this.drawingEnabled = enabled;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
     }
 }

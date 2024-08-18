@@ -4,6 +4,7 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
+
 /**
  * Grayscale class to apply Grayscale filter to images
  */
